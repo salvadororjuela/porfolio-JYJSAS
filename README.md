@@ -1,0 +1,2 @@
+# porfolio-JYJSAS
+This application was developed and taylored specifically for a company under business rules. These include: 1) Only the superuser can create new users. 2) Certain IDs are designated specifically for certain company positions (ie. 1=Managing Director, 2=Storer, 3= Operations Manager, 4 and on=contractors). 3) The application is designed to display some company general information to the general public and the functions of the page are only accesable to authorized employees with access credentials.

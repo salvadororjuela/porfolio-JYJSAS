@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 
+        {% block title %} {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'inventarios/styles.css' %}?{% now 'U' %}">
+    <link href ="https://file.myfontastic.com/KL3SN5cnuidMLxZSwWuarG/icons.css" rel = "hoja de estilo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+   
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <img class="main_logo" src="{% static 'inventarios/Logo_J&J2.png' %}">
+            <input type= "checkbox" id="menu-bar">
+            <label class="icon-menu" for="menu-bar"></label>
+            <nav class="menu">
+                <a href="{% url 'inventarios:index' %}" class="href">Inicio</a>
+                <a href="{% url 'inventarios:mision' %}" class="href">Mision</a>
+                <a href="{% url 'inventarios:vision' %}" class="href">Vision</a>
+                <a href="{% url 'inventarios:contacto' %}" class="href">Contacto</a>
+                <a href="{% url 'inventarios:ingresar' %}" class="href">Ingresar</a>
+            </nav>
+        </div>    
+    </header>
+    <main>
+    <section id="portada">
+        <img src="{% static 'inventarios/port.jpeg' %}">
+        <div class="contenedor">
+            <h2 class="font-effect-shadow-multiple">LOS MEJORES TRABAJOS CON LA MEJOR CALIDAD</h2>
+            <p class="font-effect-shadow-multiple">NUESTRA COMPAÑIA TRABAJA CON LOS MEJORES MATERIALES Y OFRECE 
+            TRABAJOS GRANTIZADOS PARA SATISFACER A LOS CLIENTES MÁS EXIGENTES</p>
+        </div>
+    </section>
+
+    <!--Espacio para inyectar el contenido unico de cada pagina -->
+    <div class="main">
+    {% block main %}
+        
+    {% endblock %}  
+    </div>  
+    <hr>
+    <br>
+
+    <section id="bien">
+
+        <h3>NUESTRA MANO DE OBRA</h3>
+        <div class="contenedor">
+            <article>
+                <img src="{% static 'inventarios/foto1.jpeg' %}">
+            </article>
+
+            <article>
+                <img src="{% static 'inventarios/foto2.jpeg' %}">
+            </article>
+
+            <article>
+                <img src="{% static 'inventarios/foto3.jpeg' %}">
+            </article>
+        </div>
+    </section>
+            
+        </section>
+        <section id="info">
+            <h3>NUESTROS MATERIALES</h3>
+            <div class="contenedor">
+            <div class="info-m">
+                <img src="{% static 'inventarios/img1.jpeg' %}">
+                <h4>Varillas de hierro</h4>
+            </div>   
+
+            <div class="info-m">
+                <img src="{% static 'inventarios/img2.jpeg' %}">
+                <h4>Tornillos de bronce</h4>
+            </div> 
+
+            <div class="info-m">
+                <img src="{% static 'inventarios/img3.jpeg' %}">
+                <h4>Tornillos de acero</h4> 
+            </div>  
+
+            <div class="info-m">
+                <img src="{% static 'inventarios/img4.jpeg' %}">
+                <h4>Cables de aluminio</h3>
+            </div>              
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contenedor">
+            <div class="copy">
+            <pre class="copy">COPYRIGHT © 2021 Proyectos Y Construcciones J&J S.A.S</pre> 
+                <pre>Ciudad:Ibague-Tolima</pre>
+                <pre>Telefono:748-92-12</pre> 
+                <pre>Direccion: calle 11 Nª 15-50</pre> 
+                <pre id="correo">Correo:j&jconstruyproyec@hotmail.com</pre></div></p>
+            <div class="redessociales">
+                <a class="icon-facebook" href="https://www.facebook.com" target="_blank"></a>
+                <a class="icon-twitter" href="http://www.twitter.com" target="_blank"></a>
+                <a class="icon-youtube" href="http://www.youtube.com" target="_blank"></a>
+                <a class="icon-instagram" href="http://www.instagram.com" target="_blank"></a>
+                <a class="icon-whatsapp" href="http://www.whatsapp.com" target="_blank"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'inventarios/script.js' %}"></script>
+</body>
+</html>

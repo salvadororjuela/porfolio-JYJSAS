@@ -1,0 +1,72 @@
+{% extends "inventarios/layout.html" %}
+
+{% block title %}
+    Reporte Materiales por Proyecto
+{% endblock %}
+
+{% block main %}
+      <div class="centering">
+            <h2>Reporte de Materiales por Proyecto</h2>
+      </div>
+      <section id="bflex">
+            <br>
+            <div class="floatLeftTabla">
+                  <table>
+                        <tr>
+                              <th><h4>Código Salida</h4></th>
+                              <th><h4>Materiales</h4></th>
+                              <th><h4>Cantidad</h4></th>
+                              <th><h4>Fecha Entrega</h4></th>
+                              <th><h4>Proyecto</h4></th>
+                              <th><h4>Responsable</h4></th>
+                        </tr>
+                        {% for producto in materiales_entregados %}
+                                <tr>
+                                    <td><p>{{ producto.codigo_orden_salida }}</p></td>
+                                    <td>
+                                            <ul>
+                                                {% for producto in producto.producto.all %}
+                                                        <li>{{ producto }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                    </td>
+                                    <td><p>{{ producto.cantidad_entregada }}</p></td>
+                                    <td><p>{{ producto.fecha_entrega_materiaprima }}</p></td>
+                                    <td><p>{{ producto.proyecto_destino }}</p></td>
+                                    <td><p>{{ producto.empleado_responsable }}</p></td>                         
+                                </tr>
+                        {% endfor %}
+                  </table>
+                    <a href="#">Imprimir</a>
+            </div>
+            <div class="floatRight">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#FF7301" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+                  <!-- El cargo del empleado se ajusta dinamicamente de acuerdo con quien haya iniciado sesion -->
+                  <h3>Perfil:&nbsp;&nbsp;<u>{{ user.cargo_empleado }}</u></h3>
+                  <br>
+                  <!-- Se usa para mostrar el usuario cuando ha iniciado sesion -->
+                  {% if user.is_authenticated %}
+                        <h3>Usuario: {{ user.username }}</h3>
+                  {% endif %}
+                  <br>
+                  <div class="centering logout">
+                        <form action="{% url 'operaciones:redirecciongerente' %}" method="post">
+                              {% csrf_token %}
+                              <input autofocus type="submit" Value="Volver al Menú" class="logout" title="Volver al Menú {{ user.cargo_empleado }}">
+                        </form>
+                  </div>
+                  <br>
+                  <div class="centering logout">
+                        <!-- Formulario necesario para ejecutar la vista salir_view en inventarios/views.py -->
+                        <form action="{% url 'inventarios:salir' %}" method="post">
+                              {% csrf_token %}
+                              <input type="submit" value="Cerrar Sesión" class="logout" title="Cerrar Sesión {{ user.cargo_empleado }}">
+                        </form>
+                  </div>
+            </div>
+            <br><br>
+      </section>
+{% endblock %}

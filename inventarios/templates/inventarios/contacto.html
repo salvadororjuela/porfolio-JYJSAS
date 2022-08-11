@@ -1,0 +1,30 @@
+{% extends "inventarios/layout.html" %}
+
+{% block title %}
+    Contáctenos
+{% endblock %}
+
+{% block main %}
+    <section id="b">
+        {% if mensaje %}
+                  <div class="message">{{ mensaje }}</div>
+                  <br>
+            {% endif %}
+        <h2>Contacto</h2>
+        <form action="{% url 'inventarios:enviarcorreogeneral' %}" method="post" class="LoginForm">
+            {% csrf_token %}
+            <p>Asunto: <input autofocus type="text" name="txtAsunto" /></p>
+            <p>Email de Contacto: <input type="email" name="txtEmail" /></p>
+            <p>
+                Mensaje:
+                <textarea name="txtMensaje"></textarea>
+            </p>
+            <input type="submit" value="Enviar" />
+        </form>
+        <br>
+        <p>Ciudad:Ibague-Tolima</p>
+        <p>Telefono:748-92-12</p> 
+        <p>Direccion: calle 11 Nª 15-50</p> 
+        <p>Correo:j&jconstruyproyec@hotmail.com</p>       
+    </section>   
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "inventarios/layout.html" %}
+
+{% block title %}
+    Solicitud Materiales Director Operativo
+{% endblock %}
+
+{% block main %}
+      <section id="bflex">
+            <br>
+            <div class="floatLeft">
+                  <div class="block">
+                        
+                  </div>
+                  <div class="block">
+                        
+                  </div>
+            </div>
+            <div class="floatRight">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#FF7301" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+                  <!-- El cargo del empleado se ajusta dinamicamente de acuerdo con quien haya iniciado sesion -->
+                  <h3>Perfil:&nbsp;&nbsp;<u>{{ user.cargo_empleado }}</u></h3>
+                  <br>
+                  <!-- Se usa para mostrar el usuario cuando ha iniciado sesion -->
+                  {% if user.is_authenticated %}
+                        <h3>Usuario: {{ user.username }}</h3>
+                  {% endif %}
+                  <br>
+                  <div class="centering logout">
+                        <form action="{% url 'operaciones:redireccionoperativo' %}" method="post">
+                              {% csrf_token %}
+                              <input type="submit" Value="Volver al Menú" class="logout" title="Volver al Menú {{ user.cargo_empleado }}">
+                        </form>
+                  </div>
+                  <br>
+                  <div class="centering logout">
+                        <!-- Formulario necesario para ejecutar la vista salir_view en inventarios/views.py -->
+                        <form action="{% url 'inventarios:salir' %}" method="post">
+                              {% csrf_token %}
+                              <input type="submit" value="Cerrar Sesión" class="logout" title="Cerrar Sesión {{ user.cargo_empleado }}">
+                        </form>
+                  </div>
+            </div>
+            <br><br>
+      </section>
+{% endblock %}

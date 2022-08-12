@@ -1,1 +1,1 @@
-web: gunicorn locallibrary.wsgi --log-file -
+web: gunicorn portfolio-JYJSAS.wsgi --log-file -

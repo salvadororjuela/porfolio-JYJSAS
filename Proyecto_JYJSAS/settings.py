@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # To change later for when the heroku address is generated
-ALLOWED_HOSTS = ['peaceful-eyrie-01733.herokuapp.com/']
+ALLOWED_HOSTS = ['peaceful-eyrie-01733.herokuapp.com']
 
 
 # Application definition

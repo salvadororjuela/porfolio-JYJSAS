@@ -1,1 +1,1 @@
-web: gunicorn portfolio-JYJSAS.wsgi --log-file -
+web: gunicorn Proyecto_JYJSAS.wsgi --log-file -

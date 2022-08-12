@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+av30rm8meu0j7o=l2hw5#h&#q&wz95mmg9zjq4m*t1bkd$%9b'
+# SECRET_KEY = 'django-insecure-+av30rm8meu0j7o=l2hw5#h&#q&wz95mmg9zjq4m*t1bkd$%9b'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY', 'django-insecure-+av30rm8meu0j7o=l2hw5#h&#q&wz95mmg9zjq4m*t1bkd$%9b')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # To change later for when the heroku address is generated 
 
 
 # Application definition
